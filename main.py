@@ -28,4 +28,7 @@ if "__main__" == __name__:
 
     #atualiando um dos usuários
     usuario = user1.get_user_by_email(email="sus_peita@gmail.com")
-    user1.update_user(user_id= usuario.id, name="Susana Alves Pinto")
+    # user1.update_user(user_id= usuario.id, name="Susana Alves Pinto")
+
+    #deletando um dos usuarios
+    user1.delete_user_by_id(user_id=usuario.id)

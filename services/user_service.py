@@ -54,3 +54,14 @@ class UserService:
 
     def list_users(self):
         return self.repository.list_users()
+    
+    def delete_user_by_id(self, user_id):
+        user = self.get_user_by_id(user_id)
+
+        if not user:
+            raise ValueError("Usuário não encontrado.")
+        
+        removal = self.repository.delete_users_from_repository(user)
+
+        if not removal:
+            raise ValueError("Não foi possível remover o usuário do repositório.")

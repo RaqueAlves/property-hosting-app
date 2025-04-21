@@ -40,7 +40,11 @@ class UserRepository:
             
         except (FileNotFoundError, json.JSONDecodeError):
             return []
-        
+    
+    '''carrega a lista de usuários 
+    novamente após as alterações 
+    nos setters de algum usuário.
+    E salva no arquivo json.'''
     def update_user(self, updated_user):
         for i, user in enumerate(self.__users):
             if user.id == updated_user.id:
@@ -61,6 +65,18 @@ class UserRepository:
             json.dump(users_data, file, ensure_ascii=False, indent=4)
         
         self.__users = users
+
+    """Remove um usuário pelo ID. 
+    Retorna True se for removido, 
+    False se não encontrado."""
+    def delete_users_from_repository(self, removed_user):
+        original_count = len(self.__users)
+        self.__users = [user for user in self.__users if user != removed_user]
+
+        if len(self.__users) < original_count:
+            self.save_users(self.__users)
+            return True  # Usuário foi removido
+        return False  # Nenhum usuário com esse ID
 
     '''retorna a lista 'users' 
     de objetos 'Usuario' 
