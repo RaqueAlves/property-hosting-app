@@ -1,5 +1,6 @@
 from repository.user_repository import UserRepository
 from model.user import User
+from utils.registry import USER_CLASSES
 
 class UserService:
     def __init__(self, user_repository: UserRepository):
@@ -9,7 +10,18 @@ class UserService:
         if self.get_user_by_email(email):
             raise ValueError("Usuário com esse e-mail já existe.")
         
-        new_user = User(name, email, user_type)
+        #mapeia o tipo para a classe correspondente
+        user_class_name = {
+            "Locador": "UserOwner",
+            "Cliente": "UserClient"
+        }.get(user_type)
+
+        if user_class_name not in USER_CLASSES:
+            raise ValueError(f"Tipo de usuário inválido: {user_type}")
+        
+        user_class = USER_CLASSES[user_class_name]
+        new_user = user_class(name, email)
+
         self.repository.add_user(new_user)
 
     def get_user_by_email(self, email):
