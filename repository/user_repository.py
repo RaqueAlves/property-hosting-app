@@ -47,7 +47,7 @@ class UserRepository:
                 self.__users[i] = updated_user
                 self.save_users(self.__users)
                 return
-            raise ValueError("Usuário não encontrado para atualização.")
+        raise ValueError("Usuário não encontrado para atualização.")
 
     '''abre ou cria um arquivo json
     caso não exista e salva os dados 
