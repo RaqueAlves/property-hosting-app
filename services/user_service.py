@@ -50,7 +50,7 @@ class UserService:
         if user_type:
             user.user_type = user_type
 
-        self.repository.save_users()  # Atualiza o repositório
+        self.repository.update_user(user)
 
     def list_users(self):
         return self.repository.list_users()

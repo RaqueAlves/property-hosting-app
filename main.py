@@ -20,8 +20,12 @@ if "__main__" == __name__:
     # user_type="Locador"
     # )
 
-    user1.create_user(
-        name="Susana Banana",
-        email="sus_peita@gmail.com",
-        user_type="Cliente"
-    )
+    # user1.create_user(
+    #     name="Susana Banana",
+    #     email="sus_peita@gmail.com",
+    #     user_type="Cliente"
+    # )
+
+    #atualiando um dos usuários
+    usuario = user1.get_user_by_email(email="sus_peita@gmail.com")
+    user1.update_user(user_id= usuario.id, name="Susana Alves Pinto")

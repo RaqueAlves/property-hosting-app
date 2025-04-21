@@ -50,3 +50,11 @@ class User:
             "id": self.id,
             "type": self.__class__.__name__
         }
+    
+    @staticmethod
+    def from_dict(data):
+        return User(
+            name=data["name"],
+            email=data["email"],
+            id=data["id"]
+        )

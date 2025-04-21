@@ -40,10 +40,18 @@ class UserRepository:
             
         except (FileNotFoundError, json.JSONDecodeError):
             return []
+        
+    def update_user(self, updated_user):
+        for i, user in enumerate(self.__users):
+            if user.id == updated_user.id:
+                self.__users[i] = updated_user
+                self.save_users(self.__users)
+                return
+            raise ValueError("Usuário não encontrado para atualização.")
 
     '''abre ou cria um arquivo json
     caso não exista e salva os dados 
-    dentro do aruivo'''
+    dentro do arquivo'''
     def save_users(self, users):
         users_data = []
         for user in users:
