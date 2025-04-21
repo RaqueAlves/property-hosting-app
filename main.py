@@ -14,8 +14,14 @@ if "__main__" == __name__:
     repositorio = UserRepository()
     user1 = UserService(repositorio)
     
+    # user1.create_user(
+    # name="Raquel Alves Pinto",
+    # email="raquelavsp7@gmail.com",
+    # user_type="Locador"
+    # )
+
     user1.create_user(
-    name="Raquel Alves Pinto",
-    email="raquelavsp7@gmail.com",
-    user_type="Locador"
-)
+        name="Susana Banana",
+        email="sus_peita@gmail.com",
+        user_type="Cliente"
+    )

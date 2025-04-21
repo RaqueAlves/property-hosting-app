@@ -25,14 +25,14 @@ class UserService:
         self.repository.add_user(new_user)
 
     def get_user_by_email(self, email):
-        users = self.repository.list_users()
+        users = self.repository.list_objects_users()
         for user in users:
             if user.email == email:
                 return user
         return None
 
     def get_user_by_id(self, user_id):
-        users = self.repository.list_users()
+        users = self.repository.list_objects_users()
         for user in users:
             if user.id == user_id:
                 return user
